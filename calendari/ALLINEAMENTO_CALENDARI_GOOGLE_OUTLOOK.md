@@ -54,7 +54,7 @@ Altri punti emersi dall'analisi e da valutare in vista del 01/12:
 
 ### Opzione A: regola solo per gli inviti (preferibile)
 
-1. Accedere alla Webmail Aruba con `fabio.russo@consulentiassociati.cc`.
+1. Accedere alla Webmail Aruba con **`f.russo@consulentiassociati.cc`**: è la casella su cui arrivano gli inviti, come ha confermato l'utente il 12/11/2026. Non usare `fabio.russo@consulentiassociati.cc`: le regole create lì il 12/11 non intercettano gli inviti.
 2. Aprire **Impostazioni → Messaggi e scrittura → Regole messaggi → Nuova regola**.
 3. Condizioni disponibili nella Webmail, confermate a video il 12/11/2026: Destinatario, Oggetto, Contenuto, Nome allegato, Dimensione, Header. Si creano **due regole**, perché le condizioni dentro la stessa regola valgono tutte insieme (AND):
    - **Regola 1 "Inviti Outlook/Teams"**: **Header** con nome `x-ms-exchange-calendar-series-instance-id` che contiene `BAAAAIIA4AB0xbcQGoLgCA`.
