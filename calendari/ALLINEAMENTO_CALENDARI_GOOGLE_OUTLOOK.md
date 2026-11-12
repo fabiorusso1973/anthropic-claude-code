@@ -56,10 +56,14 @@ Altri punti emersi dall'analisi e da valutare in vista del 01/12:
 
 1. Accedere alla Webmail Aruba con `fabio.russo@consulentiassociati.cc`.
 2. Aprire **Impostazioni → Messaggi e scrittura → Regole messaggi → Nuova regola**.
-3. Impostare la condizione:
-   - se l'interfaccia la offre, una condizione **su intestazione** con `Content-Type` contenente `text/calendar`;
-   - in mancanza, condizioni sull'**Oggetto** che contiene `Invito:`, `Invitation:`, `Aggiornato:`, `Updated invitation`, `Annullato:`, `Canceled:` (in OR, se ammesso; altrimenti una regola per ciascun prefisso).
-4. Come azione impostare **Inoltra a** `f.russo@soluzionetasse.com`.
+3. Condizioni disponibili nella Webmail, confermate a video il 12/11/2026: Destinatario, Oggetto, Contenuto, Nome allegato, Dimensione, Header. Si creano **due regole**, perché le condizioni dentro la stessa regola valgono tutte insieme (AND):
+   - **Regola 1 "Inviti Outlook/Teams"**: **Header** con nome `x-ms-exchange-calendar-series-instance-id` che contiene `BAAAAIIA4AB0xbcQGoLgCA`.
+     - *Riscontro*: l'invito Teams "Statuto RF Innova" del 15/01/2026, letto per intero, contiene questo header con un valore che inizia con `BAAAAIIA4AB0xbcQGoLgCA`.
+     - *Formato del messaggio*: è `multipart/alternative`. La parte `text/calendar; method=REQUEST` è inserita nel corpo e **non ha un nome file**, e `X-MS-Has-Attach` è vuoto. Per questo un filtro su "Nome allegato" **non** intercetta gli inviti Outlook/Teams.
+     - *Ripiego*: header `x-ms-traffictypediagnostic` che contiene `MeetingMessage`, presente nello stesso invito.
+   - **Regola 2 "Inviti Google/altri (.ics)"**: **Nome allegato** che contiene `invite.ics`. È riscontrato sugli inviti Google Calendar presenti in Gmail.
+   - L'**Oggetto** è inaffidabile: gli inviti Outlook hanno come oggetto solo il titolo della riunione, senza prefisso "Invito:".
+4. Come azione di entrambe le regole impostare **Inoltra a** `f.russo@soluzionetasse.com`.
 5. Verificare che resti una copia nella casella Aruba. Se la regola non lo consente, valutare l'Opzione B.
 6. Salvare. Aruba invia una mail di conferma "La regola messaggi è stata impostata".
 
