@@ -110,3 +110,14 @@ Le pagine ufficiali (guide.aruba.it, learn.microsoft.com, support.microsoft.com,
 | Gmail: messaggio "Fw: Raccomandazioni" del 01/11/2026 (intestazioni RAW) | **sì** | Evidenza del server Aruba, §1 |
 | Casella M365 e calendario Outlook (connettore Microsoft 365) | **sì** | Casella inattiva, §1 |
 | Google Calendar: elenco calendari ed eventi | **sì** | §1 |
+
+## 7. Stato al 12/11/2026 (aggiornamento finale)
+
+- **Casella corretta: `fabio.russo@consulentiassociati.cc` (Aruba).** È la casella letta con l'app Outlook. Il riscontro viene dall'invito Teams "Meeting provvigioni infragruppo", ricevuto il 10/11/2026 su questa casella. La precisazione su `f.russo@consulentiassociati.cc` riportata al §3 è superata: le regole vanno su **fabio.russo@**, dove sono già state create.
+- **Regole Aruba create dall'utente il 12/11/2026 su fabio.russo@:**
+  1. Header `x-ms-exchange-calendar-series-instance-id` contiene `BAAAAIIA4AB0xbcQGoLgCA`, poi Inoltra a `f.russo@soluzionetasse.com`;
+  2. Nome allegato contiene `invite.ics`, poi Inoltra a `f.russo@soluzionetasse.com`.
+- **La casella Gmail `f.russo@soluzionetasse.com` non richiede configurazioni:** gli inviti indirizzati qui entrano già in Google Calendar.
+- **Inviti arrivati prima della creazione delle regole:** non vengono inoltrati, perché le regole valgono solo per i messaggi nuovi. Vanno copiati a mano. "Meeting provvigioni infragruppo" del 16/11/2026, 11:30–12:30, è stato inserito manualmente in Google Calendar ricavando i dati dal file .msg.
+- **Test su un invito Teams nuovo:** non ancora eseguito.
+- **Avvertenza operativa:** le risposte agli inviti (accetto/rifiuto) vanno date dall'app Outlook, per non rispondere all'organizzatore da un indirizzo diverso.
