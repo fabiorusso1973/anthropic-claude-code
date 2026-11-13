@@ -121,3 +121,21 @@ Le pagine ufficiali (guide.aruba.it, learn.microsoft.com, support.microsoft.com,
 - **Inviti arrivati prima della creazione delle regole:** non vengono inoltrati, perché le regole valgono solo per i messaggi nuovi. Vanno copiati a mano. "Meeting provvigioni infragruppo" del 16/11/2026, 11:30–12:30, è stato inserito manualmente in Google Calendar ricavando i dati dal file .msg.
 - **Test su un invito Teams nuovo:** non ancora eseguito.
 - **Avvertenza operativa:** le risposte agli inviti (accetto/rifiuto) vanno date dall'app Outlook, per non rispondere all'organizzatore da un indirizzo diverso.
+
+## 8. Esito del test reale (13/11/2026)
+
+**Invito di prova:** "Convocazione Cda 27 novembre di Gruppo Italia Vendita Auto SpA", inviato da Giada Calderoni (Microsoft 365) a fabio.russo@consulentiassociati.cc. È stato esaminato il file .msg salvato dall'utente.
+
+**L'inoltro Aruba funziona.** Nelle intestazioni del file compaiono:
+- `Received: from smtpcmd0646.aruba.it … by mx.google.com … for <f.russo@soluzionetasse.com>`;
+- `Delivered-To: f.russo@soluzionetasse.com`;
+- `Return-Path: SRS0=…=gruppoivaspa.com=giada.calderoni@consulentiassociati.cc`, cioè con riscrittura SRS da parte di Aruba;
+- `dkim=pass header.i=@gruppoivaspa.com`, quindi la firma originale è rimasta valida;
+- l'header `x-ms-exchange-calendar-series-instance-id: BAAAAIIA4AB0xbcQGoLgCA…`, che ha fatto scattare la Regola 1.
+
+**Il passaggio a Google Calendar non avviene in automatico.** L'evento non è stato aggiunto al calendario. Causa probabile, non ancora verificata sulla documentazione Google: tra gli invitati non compare `f.russo@soluzionetasse.com` ma `fabio.russo@consulentiassociati.cc`, quindi Google non riconosce l'utente come destinatario dell'invito.
+
+**Rimedi:**
+1. Usare il pulsante "Aggiungi al calendario" nella scheda invito di Gmail (manuale).
+2. Aggiungere `fabio.russo@consulentiassociati.cc` come indirizzo alternativo verificato ("Invia messaggio come") nell'account Google. **Da verificare** se in questo modo Google Calendar riconosce gli inviti.
+3. Inserimento manuale dell'evento. Il CdA del 27/11/2026 (11:00–11:30) è stato inserito così.
